@@ -1,0 +1,34 @@
+<div class="well">
+	<h1>Listing Work hours</h1>
+</div>	
+<div class="well">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_hours.each do |work_hour| %>
+      <tr>
+        <td><%= work_hour.day %></td>
+        <td><%= work_hour.start_time.strftime('%H:%M') %></td>
+        <td><%= work_hour.end_time.strftime('%H:%M') %></td>
+        <td><%= link_to '<i class="icon-eye-open"></i>'.html_safe, work_hour %></td>
+        <td><%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_work_hour_path(work_hour) %></td>
+        <td><%= link_to '<i class="icon-trash"></i>'.html_safe, work_hour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<div class="well">
+	<%= link_to 'New Work hour', new_work_hour_path, :class => "btn btn-primary" %>
+</div>	

@@ -1,0 +1,42 @@
+<% if @client_workers.empty? && @team_leaders.empty?  %>
+<div class="well">
+	<h4 class="text-center"> There are no workers yet created by you <%= current_user.name if current_user.name%></h4> <br />
+	<p class="text-center"><%= link_to "Create Workers", new_worker_path, :class => "btn btn-success"%></p>
+</div>
+<% else %>
+<h1>Listing workers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alias</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client_workers.each do |worker| %>
+      <tr>
+        <td><%= worker.alias %></td>
+        <td><%= link_to 'Show', worker %></td>
+        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+        <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+	<% @team_leaders.each do |tl|%>
+	 <% tl.workers.each do |worker|%>
+	<tr>
+	<td><%= worker.alias %></td>
+	<td><%= link_to 'Show', worker %></td>
+    <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+    <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	 <%end%>
+	<%end%>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Worker', new_worker_path %>
+<% end %>

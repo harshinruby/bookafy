@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="span6">
+          <div class="register-info-wraper">
+        <div id="register-info">
+        
+          <h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
+        
+          <ul dir="rtl">
+            <li>Blah blah blah</li>
+            <li>That's why this app is so awesome</li>
+            <li>!So register, like, right NOW</li>
+            <li>Or don't, who cares</li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+    	<div id="register-wraper">
+    	<%= simple_form_for(@client) do |f| %>
+		<%= f.simple_fields_for :user do |u|%>
+		<%= link_to image_tag('fb.png', :class => 'facebook_button'), "/auth/facebook", id: "sign_in" %> <%= link_to image_tag('tb.png', :class => 'facebook_button'), "#" %> 
+		<hr />
+			<%= u.input :email, :class => "input-huge", :placeholder => "Email Address" %>
+			<%= u.input :password, hint: false, :placeholder => "Password" %>
+			<%= u.input :password_confirmation, :placeholder => "Password Confirmation" %>
+			<%= u.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones%>
+			<% end %>
+			<div class="footer">
+      			<label class="typica-label checkbox inline">
+        	  		<input type="checkbox" id="inlineCheckbox1" value="option1"> I agree to something I will never read
+      			</label><br /> <br />
+      			<button type="submit" class="btn btn-success" style="padding: 10px 40px;background-image: none;box-shadow: none;">Register</button>
+    		</div>
+    	<% end %>
+	</div>
+    </div>
+  </div>
+<footer class="white navbar-fixed-bottom">
+	Already registered? <a class="btn btn-black" href="/users/sign_in">Login</a>
+</footer>
+</div>
+
+
+
+
+
+            
+-

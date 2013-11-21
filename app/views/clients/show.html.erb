@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @client.business_name %>
+</p>
+
+<p>
+  <strong>Business type:</strong>
+  <%= @client.business_type %>
+</p>
+
+<p>
+  <strong>Business address:</strong>
+  <%= @client.business_address %>
+</p>
+
+<h4> Appointments </h4>
+
+<%= form_for(@client.appointments.build) do |f| %>
+
+  <%# f.hidden_field :client_id => current_user.role_id %>
+  <div class="field">
+    <%= f.label :Category_Name %>
+    <%= f.collection_select(:category_id, Category.order(:name), :id, :name, :include_blank => true ) %>
+  </div>
+  <div class="field">
+    <%= f.label :Service_Name %>
+    <%= f.grouped_collection_select :service_id, Category.order(:name), :services, :name, :id, :service_name, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :Worker_Name %>
+    <%= f.grouped_collection_select :worker_id, Service.order(:service_name), :workers, :service_name, :id, :alias, :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :appointment_start_time %>
+    <%= f.datetime_select :appointment_start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :appointment_end_time %>
+    <%= f.datetime_select :appointment_end_time %>
+  </div>
+
+  <%= f.fields_for :customer do |builder| %>
+    <fieldset>
+   	<%= builder.label :first_name %>
+    <%= builder.text_field :first_name %>
+    <%= builder.label :last_name %>
+    <%= builder.text_field :last_name %>
+    </fieldset>
+   
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

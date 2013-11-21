@@ -1,0 +1,47 @@
+<% if @cat.empty? %>
+<div class="well">
+	<h4 class="text-center"> There are no services yet created by you <%= current_user.name if current_user.name%></h4> <br />
+	<p class="text-center"><%= link_to "Services", new_service_path, :class => "btn btn-success"%></p>
+</div>
+<% else %>
+<div class="well">
+<h4>Listing services</h4>
+<% @cat.each do |category| %>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th colspan="3"><%= category.name %></th>
+          <th colspan="3"><%= link_to 'Edit',edit_category_path(category, :from => 'services')%></th>
+        </tr>
+
+        <tr>
+          <th>Service name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <% category.services.each do |service| %>
+       <tbody>
+        
+          <tr id= "tr_<%= service.id %>">
+            <td><%= service.service_name %></td>
+            <td><%= service.price %></td>
+            <td><%= service.description %></td>
+            <td><%= link_to 'Show', service  %> </td>
+            <td><%= link_to 'Edit', edit_service_path(service)  %> </td>
+            <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        
+      </tbody>
+     <% end %> 
+  </table>
+<% end %>
+<br>
+</div>
+<div class="well">
+  <%= link_to 'New Service', new_service_path, :class => "btn btn-primary"%>  <%= link_to "or create category", new_category_path%>
+</div>
+<%end%>

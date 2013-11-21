@@ -1,0 +1,17 @@
+<%= simple_form_for(@client) do |f| %>
+  <%= f.error_notification%>
+  <div class="form-inputs">	
+  	<%= f.input :business_name %>
+  </div>
+  <div class="form-inputs">	
+  	<%= f.input :business_type %>
+  </div>
+  <div class="form-inputs">
+  	<%= f.input :business_address %>
+  </div>
+	<%= f.simple_fields_for :user do |builder|%>
+	<%= render 'devise/registrations/details', u: builder%>
+	<% end %>
+
+  <%= f.submit %>  
+<% end %>

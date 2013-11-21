@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<div class="well">
+	<table class="table table-bordered">
+	  <thead>
+	    <tr>
+	      <th>Day</th>
+	      <th>Start time</th>
+	      <th>End time</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	      <tr>
+	        <td><%= @work_hour.day %></td>
+	        <td><%= @work_hour.start_time %></td>
+	        <td><%= @work_hour.end_time %></td>
+	      </tr>
+	  </tbody>
+	</table>
+	
+</div>
+<div class="well">
+<%= link_to 'Edit', edit_work_hour_path(@work_hour), :class => "btn btn-primary"  %> |
+<%= link_to 'Back', work_hours_path, :class => "btn btn-primary" %>
+</div>

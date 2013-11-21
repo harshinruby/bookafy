@@ -1,0 +1,47 @@
+<%= form_for(@appointment) do |f| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this cat from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# f.hidden_field :client_id => current_user.role_id %>
+  <div class="field">
+    <%= f.label :Category_Name %>
+    <%= f.collection_select(:category_id, Category.order(:name), :id, :name, :include_blank => true ) %>
+  </div>
+  <div class="field">
+    <%= f.label :Service_Name %>
+    <%= f.grouped_collection_select :service_id, Category.order(:name), :services, :name, :id, :service_name, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :Worker_Name %>
+    <%= f.grouped_collection_select :worker_id, Service.order(:service_name), :workers, :service_name, :id, :alias, :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :appointment_start_time %>
+    <%= f.datetime_select :appointment_start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :appointment_end_time %>
+    <%= f.datetime_select :appointment_end_time %>
+  </div>
+
+  <%= f.fields_for :customer do |builder| %>
+    <%= builder.label :first_name %>
+    <%= builder.text_field :first_name %>
+    <%= builder.label :last_name %>
+    <%= builder.text_field :last_name %>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= simple_form_for(@worker) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :alias %>
+  </div>
+	<%= f.simple_fields_for :user do |builder|%>
+	<%= render 'devise/registrations/details', u: builder%>
+	<% end %>
+  <% if @services.count != 0 %>
+  <%= f.association :services, collection: @services,:label => "Assigned Services", label_method: :service_name, as: :check_boxes %>
+  <% else %>
+  <p> Services not found </p>
+  <% end %>
+  
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

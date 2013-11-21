@@ -1,0 +1,14 @@
+<div class="well">
+<%= simple_form_for(@work_hour) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :day, :collection => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %>
+    <%= f.input :start_time, as: :time %>
+    <%= f.input :end_time, as: :time %>
+  </div>
+</div>
+  <div class="form-actions">
+    <%= f.button :submit, "Submit", :class => "btn btn-primary" %>
+  </div>
+<% end %>

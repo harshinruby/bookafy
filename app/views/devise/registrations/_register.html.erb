@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="span6">
+          <div class="register-info-wraper">
+        <div id="register-info">
+        
+          <h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
+        
+          <ul dir="rtl">
+            <li>Blah blah blah</li>
+            <li>That's why this app is so awesome</li>
+            <li>!So register, like, right NOW</li>
+            <li>Or don't, who cares</li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+
+
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "register-wraper", :class => "register-form"}) do |f| %>
+      <%= devise_error_messages! %>
+
+      <p>
+          <span class="blue" style="font-family: 'Lato', Helvetica, sans-serif;font-size: 22px;color: #016F8C;font-weight: 400;"> Start Your Free Trial</span>
+      </p>
+
+      <p><span class="blue" style="font-family: 'Lato', Helvetica, sans-serif;font-size: 18px;color: #016F8C;font-weight: 400;">
+          Login by</span>
+      </p>
+
+      
+
+      <%= link_to image_tag('facebook_button.png', :class => 'facebook_button'), "#" %> <%= link_to image_tag('twitter_button.png', :class => 'facebook_button'), "#" %>
+
+       <hr/>
+
+      <%#= f.label :first_name %>
+      <%#= f.text_field :first_name, :class => "input-huge" %>
+
+      <%#= f.label :last_name %>
+      <%#= f.text_field :last_name, :class => "input-huge" %>
+
+      <%#= f.label :phone %>
+      <%#= f.text_field :phone, :class => "input-huge" %>
+
+      <%= f.hidden_field :type, :value => "Admin" %>
+
+      <%= f.label :email, "Email Address(this will be your username)" %>
+      <%= f.email_field :email, :class => "input-huge" %>
+
+      <%= f.label :password, "Password(Atleast 8 characters)" %>
+      <%= f.password_field :password, :class => "input-huge" %>
+
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, :class => "input-huge" %><br />
+  
+
+      
+      <div class="footer">
+      <label class="typica-label checkbox inline">
+          <input type="checkbox" id="inlineCheckbox1" value="option1"> I agree to something I will never read
+      </label><br /> <br />
+      <button type="submit" class="btn btn-success" style="padding: 10px 40px;
+    background-image: none;
+    box-shadow: none;">Register</button>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+            
+-

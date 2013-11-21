@@ -1,0 +1,28 @@
+<div class="row-fluid">
+	<div class="span2">
+		<div class="sidebar-nav">
+    <div class="well" style="width:200px; padding: 8px 0;">
+		<ul class="nav nav-list"> 
+		  <li class="nav-header">Settings</li>        
+		  <li>
+		  	<%= link_to "<i class='icon-home'></i>Team Leaders".html_safe, team_leaders_path, :remote => true %> 
+		  </li>
+          <li>
+          	<%= link_to "<i class='icon-envelope'></i> Staff".html_safe, workers_path, :remote => true%> 
+          </li>
+          <li>
+          	<%= link_to "<i class='icon-comment'></i> Categories".html_safe, categories_path, :remote => true%> 
+          </li>
+		  <li>
+	        <%= link_to "<i class='icon-hand-right'></i> Services".html_safe, services_path, :remote => true%> 
+	      </li>
+		</ul>
+	</div>
+</div>
+	</div>
+	<div class="span10" id="content-display">
+
+
+	</div>	
+</div>
+

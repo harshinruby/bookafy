@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookafy</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %> <!-- theme will be provided by the client -->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<div class="row-fluid">
+		<div class="span12">
+	   		<div class="hero-unit">
+   	   			<% flash.each do |name, msg| %>
+   	   			  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+   	   			    <a class="close" data-dismiss="alert">×</a>
+   	   			    <%= msg %>
+   	   			  </div>
+   	   			<% end %>
+				<%= yield %>
+   	   			<% if !user_signed_in? && !current_facebooker%>
+   	   			<p class="text-center">	<%= link_to('Login', new_user_session_path)  %> | <%= link_to('Register', new_client_path)%> </p>
+	   			<p class="text-center"><%= link_to "Sign through Facebook", "/auth/facebook", id: "sign_in" %></p>
+   	   			<% elsif user_signed_in?%>
+   	   			<p class="text-center"> Hi<%= current_user.name if current_user.name%>, your logged in as <%= current_user.role_type %></p> <br />
+   	   				<hr />
+   	   			<p class="text-center">  <%= link_to('Edit Profile',edit_user_registration_path ) %> | 
+   	   				<% if current_user.role_type == "Client"%>
+   	   					<%= link_to("Edit Account", edit_client_path(current_user.role_id))%>
+   	   				<% elsif current_user.role_type == "TeamLeader" %>
+   	   					<%= link_to("Edit Account", edit_team_leader_path(current_user.role_id))%>
+   	   				<% elsif current_user.role_type == "Worker"%>
+   	   					<%= link_to("Edit Account", edit_worker_path(current_user.role_id))%></p>
+   	   				<% else%>
+   	   				
+   	   				<% end %>
+				 |  <%= link_to "Dashboard", calendar_path %> | <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %> 
+   	   			<% elsif current_facebooker %>
+   	   			<p> Your type is <%= current_facebooker.role_type %></p>
+   	   			    Signed in as <strong><%= current_facebooker.name %><strong>
+   	   			   <%=link_to "Signout", signout_path, id: "sign_out" %>
+   	   			<% end %>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
