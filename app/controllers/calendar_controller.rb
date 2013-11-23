@@ -3,7 +3,8 @@ class CalendarController < ApplicationController
   def index
     @event = Event.new
   end
-  
+
+
   private
   
   def set_client
