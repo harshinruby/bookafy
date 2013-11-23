@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   #before_filter :load_client, only: [:create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:index, :create]
+  before_action :set_client, only: [:index, :create, :new]
 
   # GET /customers
   # GET /customers.json
