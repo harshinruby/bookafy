@@ -2,23 +2,11 @@
 <html>
 <head>
   <title>BookafyApplication</title>
-  <%= stylesheet_link_tag    "typica-login/authentication_layout", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "typica-login/authentication", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="/"><%=image_tag "logo_login.png" %></a>
-    </div>
-  </div>
-</div>
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
     <a class="close" data-dismiss="alert">×</a>

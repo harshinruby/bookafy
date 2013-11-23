@@ -1,0 +1,23 @@
+<p> Welcome to the appointments booking page of <%= @client.business_name%>. This type of this company is <%= @client.business_type %></p>
+<p> Contacts </p>
+<%= @client.business_address %>
+<hr />
+<%= form_for(@appointment) do |builder|%>
+	<%#= f.fields_for :appointments do |builder|%>
+    <%# builder.hidden_field client_id: @client%>
+    <fieldset>
+        <%= builder.label :appointment_start_time %>
+   		<%= builder.datetime_select :appointment_start_time, :ampm =>true %>
+    	<%= builder.label :appointment_end_time %>
+    	<%= builder.datetime_select :appointment_end_time, :ampm =>true %>
+
+    	<%= builder.simple_fields_for :customers do |cust_build|%>
+            <%= cust_build.label :first_name %>
+    		<%= cust_build.text_field :first_name %>
+            <%=cust_build.label :last_name%>
+    		<%= cust_build.text_field :last_name %>
+    	<%end%>
+    </fieldset>	
+    <%# end %>
+    <%=builder.submit %>
+<%end%>

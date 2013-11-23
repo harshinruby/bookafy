@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: MyString
+  status: false
+  start_time: 2013-11-22 22:14:12
+  end_time: 2013-11-22 22:14:12
+
+two:
+  day: MyString
+  status: false
+  start_time: 2013-11-22 22:14:12
+  end_time: 2013-11-22 22:14:12

@@ -11,9 +11,15 @@ class Client < ActiveRecord::Base
   has_many :workers
   has_many :categories
   has_many :services
+
   has_many :appointments
-  has_many :customers
+  accepts_nested_attributes_for :appointments
+  
   belongs_to :plan
+
+  has_many :customers
+  accepts_nested_attributes_for :customers
+
   
   
 end

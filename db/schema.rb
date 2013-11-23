@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120132746) do
+ActiveRecord::Schema.define(version: 20131122164412) do
 
   create_table "allocations", force: true do |t|
     t.integer  "service_id"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 20131120132746) do
     t.integer  "booker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "service_id"
+    t.integer  "worker_id"
   end
 
   create_table "events", force: true do |t|
@@ -151,6 +154,8 @@ ActiveRecord::Schema.define(version: 20131120132746) do
     t.string   "time_zone"
     t.integer  "role_id"
     t.string   "role_type"
+    t.integer  "worktime_id"
+    t.string   "worktime_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -173,6 +178,17 @@ ActiveRecord::Schema.define(version: 20131120132746) do
     t.integer  "client_id"
     t.integer  "team_leader_id"
     t.integer  "faceboooker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "working_days", force: true do |t|
+    t.string   "day"
+    t.boolean  "status"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "worktime_id"
+    t.string   "worktime_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

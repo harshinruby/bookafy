@@ -1,0 +1,11 @@
+<div class="well">
+<% @working_days.each do |f|%>
+        <%= f.day%>
+        <%= form_for(f) do |fh|%>
+                 <%= fh.check_box :status%> | <%= fh.time_field :start_time, :ampm =>true%> | <%= fh.time_field :end_time, :ampm => true%>
+                <%= fh.submit "Submit ", :class => "btn btn-info" %> 
+                <br />
+        <%end%>        
+<% end %>       
+
+</div> 

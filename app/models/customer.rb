@@ -1,12 +1,15 @@
 class Customer < ActiveRecord::Base
   belongs_to :client
 
-  has_many :appointments
+  # for dynamic forms
+  belongs_to :worker
+  belongs_to :category
+  belongs_to :service
   
+  #two way associations
   belongs_to :booker, :class_name => 'Appointment', :foreign_key => 'booker_id'
-  
+  has_many :appointments
   accepts_nested_attributes_for :appointments
-
 
  def self.import(file, user_id)
   spreadsheet = open_spreadsheet(file)

@@ -12,17 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require appointments
-//= require subscriptions
+//= require fullcalendar
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require jquery.ui.resizable
 //= require jquery.ui.selectable
 
 //= require jquery.rest
-//= require fullcalendar
 //= require calendar
-
+//= require appointments
+//= require subscriptions
 //= require nexus/modernizr.custom
 //= require nexus/classie
 //= require nexus/gnmenu

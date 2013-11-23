@@ -11,18 +11,26 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @client = Client.find_by_business_name!("suvidha")
+    #if request.subdomain.present?
+    #  @client = Client.find_by_business_name!(request.subdomain)
+    #  customer = @client.customers.build
+    #  customer.appointments.build
+    #else
+    #  @client = Client.find(params[:id])
   end
 
   # GET /clients/new
   def new
      @client = Client.new
      @client.build_user
+     #customer = @client.customers.build
+     #customer.appointments.build
      @client.work_hours.build
   end
 
   # GET /clients/1/edit
   def edit
+
   end
 
   # POST /clients

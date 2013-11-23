@@ -1,6 +1,7 @@
 require 'subdomain'
 Bookafy::Application.routes.draw do
   
+  resources :working_days, :only => [:index, :show, :update, :edit]
   resources :customers do
       collection { post :import }
   end
@@ -31,7 +32,7 @@ Bookafy::Application.routes.draw do
   # You can have the root of your site routed with "root"
   match "/settings", :to => "settings#index", :as => "setting", via: :get
   constraints(Subdomain) do
-    match '/' => "clients#show", via: :get #necessary to be just above the root route
+    match '/' => "customers#new", via: :get #necessary to be just above the root route
   end 
   root :to => "home#index"
   match "/", :to => "home#index", :as => "home", via: :get 

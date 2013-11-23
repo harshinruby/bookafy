@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  #before_filter :load_client
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_client, only: [:index, :create, :update]
 
@@ -15,8 +16,11 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = Appointment.new
-    @appointment.build_customer
+    @appointment = Appointment.new 
+    @appointment.build_customer 
+
+    
+    #@user.build_account
     #@user.build_account
   end
 

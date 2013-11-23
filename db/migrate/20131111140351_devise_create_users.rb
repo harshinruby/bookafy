@@ -42,6 +42,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :time_zone
       t.integer :role_id
       t.string :role_type
+      t.integer :worktime_id
+      t.string :worktime_type
 
       t.timestamps
     end

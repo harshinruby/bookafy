@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  #before_filter :load_client, only: [:create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :set_client, only: [:index, :create]
 
@@ -21,9 +22,9 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
+    #@client = Client.find_by_business_name!(request.subdomain)
     @customer = Customer.new
     @customer.appointments.build
-    #@account.users.build
   end
 
   def import
@@ -80,9 +81,13 @@ class CustomersController < ApplicationController
     def set_customer
       @customer = Customer.find(params[:id])
     end
-
+    
     def set_client
+      if user_signed_in?
       @client = Client.find(current_user.role_id)
+      else
+      @client = Client.find_by_business_name!(request.subdomain)
+      end 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

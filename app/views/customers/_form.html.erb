@@ -1,11 +1,26 @@
+<%#=@client.business_name%>
+
 <%= form_for(@customer) do |f| %>
-  <%= f.error_notification %>
+  <%#= f.error_notification %>
 
 
+  <div class="field">
+    <%= f.label :Category_Name %>
+    <%= f.collection_select(:category_id, Category.order(:name), :id, :name, :include_blank => true ) %>
+  </div>
+  <div class="field">
+    <%= f.label :Service_Name %>
+    <%= f.grouped_collection_select :service_id, Category.order(:name), :services, :name, :id, :service_name, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :Worker_Name %>
+    <%= f.grouped_collection_select :worker_id, Service.order(:service_name), :workers, :service_name, :id, :alias, :include_blank => true %>
+  </div>
+<br /> <br />
   <%= f.fields_for :appointments do |builder|%>
     <fieldset>
       <%= builder.label :appointment_start_time %>
-      <%= builder.datetime_select :appointment_start_time %>
+      <%= builder.datetime_select :appointment_start_time %> <br />
       <%= builder.label :appointment_end_time %>
       <%= builder.datetime_select :appointment_end_time %>
     </fieldset>
@@ -13,19 +28,19 @@
 
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :address %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :zip_code %>
-    <%= f.input :dob %>
-    <%= f.input :mobile %>
-    <%= f.input :email %>
+    <%= f.text_field :title %>
+    <%= f.text_field :first_name %>
+    <%#= f.input :last_name %>
+    <%#= f.input :address %>
+    <%#= f.input :city %>
+    <%#= f.input :state %>
+    <%#= f.input :zip_code %>
+    <%#= f.input :dob %>
+    <%#= f.input :mobile %>
+    <%#= f.input :email %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit %>
   </div>
 <% end %>

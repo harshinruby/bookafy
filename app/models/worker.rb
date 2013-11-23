@@ -1,5 +1,6 @@
 class Worker < ActiveRecord::Base
   has_one :user, as: :role, dependent: :destroy 
+  has_one :user, as: :worktime, dependent: :destroy
   accepts_nested_attributes_for :user
   belongs_to :client
   belongs_to :team_leader
@@ -8,5 +9,6 @@ class Worker < ActiveRecord::Base
   has_many :services, through: :allocations
   has_many :work_hours
   has_many :appointments
+  has_many :worktimes, as: :worktime
   
 end
